@@ -2,11 +2,12 @@ import mongoose from 'mongoose'
 import {DB_NAME} from "./constants.js"
 //require('dotenv').config({path:'./env'})
 
+
 import dotenv from "dotenv"
 
 dotenv.config(
     {
-        path:'./env'
+        path:'./.env'
     }
 )
 
@@ -48,3 +49,14 @@ connectDB()
 .catch((err)=>{
     console.log("MONGODB connection failed !!! ",err);
 })
+
+// console.log("🛠️ Available Routes:");
+// if (app._router) {
+//     app._router.stack.forEach((r) => {
+//         if (r.route && r.route.path) {
+//             console.log(r.route.path);
+//         }
+//     });
+// } else {
+//     console.log("⚠️ No routes found! Check if routes are imported correctly.");
+// }
