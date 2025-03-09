@@ -59,12 +59,25 @@
 
  userSchema.pre("save",async function(next) {
     if(!this.isModified("password")) return next();
+    // if (!this.password) {
+    //     throw new Error("Password is missing before hashing."); // Prevent undefined values
+    // }
 
     this.password=await bcrypt.hash(this.password,10)
     next()
  })
 
  userSchema.methods.isPasswordCorrect=async function (password) {
+    //  console.log("Entered password:", password);
+    //  console.log("Stored password:", this.password);
+    // if (!password || !this.password) { 
+    //     throw new Error("Password or stored hash is missing.");
+    // }
+//     const user = await User.findOne({ email }).select("+password"); // 👈 Ensure password is retrieved
+
+// console.log(user);
+
+
    return await bcrypt.compare(password, this.password )
     
  }
